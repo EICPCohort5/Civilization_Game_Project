@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/bootstrap.css" />
     <link rel="stylesheet" href="stylesheets/style.css">
+    <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>WE LOVE GAMES!</title>
   </head>
   <body>
@@ -38,14 +39,42 @@
                 <th>Platform</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody id="gamesTable">
+              <tr>
+                <th>Super Smash Bros Melee</th>
+                <th>Nintendo</th>
+                <th>2001</th>
+                <th>Gamecube</th>
+              </tr>
+              <tr>
+                <th>God of War</th>
+                <th>Santa Monica</th>
+                <th>2017</th>
+                <th>Playstation & PC</th>
+              </tr>
+              <tr>
+                <th>Minecraft</th>
+                <th>Mojang</th>
+                <th>2011</th>
+                <th>Multiple</th>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
-      <div class="input-group col-md-4">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-        <button type="button" class="btn">search</button>
+      <div class="input-group col-md-4" id ="searchBarDiv">
+        <input id="gamesSearch" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
       </div>
     </main>
+    <script>
+      $(document).ready(function(){
+        $("#gamesSearch").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#gamesTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+      </script>
   </body>
 </html>
