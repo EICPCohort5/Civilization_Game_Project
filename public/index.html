@@ -5,26 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="stylesheets/bootstrap.css" />
+    <link rel="stylesheet" href="stylesheets/style.css">
     <title>WE LOVE GAMES!</title>
   </head>
   <body>
     <header>
         <h1>Super Gamer Land</h1>
-        <p>Welcome To Gamer Land</p>
         <hr>
     </header>
-    <nav class="row">
-      <div class="col">
-        <ul class="list-inline">
-          <li class="list-inline-item">Home</li>
-          <li class="list-inline-item">
-            <a href="list-games.html">List Games</a>
+    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class = "nav-item"><a class = "nav-link disabled">Home </a></li>
+          <li class= "nav-item">
+            <a class = "nav-link active" href="list-games.html">List Games</a>
           </li>
-          <li class="list-inline-item">
-            <a href="add-game.html">Add a Game</a>
+          <li class="nav-item">
+            <a class = "nav-link active" href="add-game.html">Add a Game</a>
           </li>
         </ul>
       </div>
     </nav>
+    <div class="mt-4 p-5 bg-secondary text-white rounded">
+      <h4>List of Routes and Their Functions</h4>
+      <ul class="list-group">
+        <li class="list-group-item">/game/{id} returns a json object of the book with the given id</li>
+        <li class="list-group-item">/game lists all the games</li>
+        <li class="list-group-item">/game/? lists a game given a filter</li>
+        <li class="list-group-item">/game with a post request adds a game to the list</li>
+        <li class="list-group-item">/game/{id} with a patch request changes a games information</li>
+        <li class="list-group-item">/game/{id} with a delete request deletes a game from the list</li>
+      </ul> 
+    </div>
+  </div>
   </body>
 </html>
