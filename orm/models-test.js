@@ -1,12 +1,13 @@
 const connection = require('./db-connection');
-const { Game, Publisher, Platform } = require('./models.js');
+const { Game, Publisher, Platform, PlatformsGames } = require('./models.js');
 
 // Immediately invoked function expression IIFE (iffy)
 (async function () {
     try {
         let publishers = await Publisher.findAll();
         for (let publisher of publishers) {
-            console.log(`${publisher.publisherId} ${publisher.publisherName}`);
+            let games = await publisher.getGames();
+            console.log(`*******Publisher: ${publisher.publisherId} ${publisher.publisherName} ${games.map((game) => game.title)}`);
         }
     } catch(error) {
         console.error('Something went wrong with the database: ', error);
@@ -24,7 +25,8 @@ const { Game, Publisher, Platform } = require('./models.js');
     try {
         let games = await Game.findAll();
         for (let game of games) {
-            console.log(`${game.title} ${game.releaseDate} ${game.publisherId}`);
+            let publisher = await game.getPublisher()
+            console.log(`${game.title} ${game.releaseDate} ${game.publisherId} ${publisher.publisherName}`);
             let platforms = await game.getPlatforms();
             let platformNames = platforms.map((platform) => platform.platformName);
             console.log('\tPlatforms: ', platformNames);
@@ -33,5 +35,14 @@ const { Game, Publisher, Platform } = require('./models.js');
         console.error('Something went wrong with the database: ', error);
     }
 
+    try {
+        let pg = await PlatformsGames.findAll();
+        for(let rel of pg) {
+            console.log(`${rel.platformId} ${rel.gameId}`);
+        }
+    } catch(error) {
+        console.error('Something went wrong with the database: ', error);
+    }
+
     connection.close();
-});
+})();

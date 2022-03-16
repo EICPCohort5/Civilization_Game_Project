@@ -54,6 +54,24 @@ const Game = connection.define(
                 key: 'publisherId'
             }
         },
+        /* platformId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: Platform,
+                key: 'platformId'
+            }
+        } */
+    },
+    {
+        underscored: true,
+        timestamps: false
+    }
+);
+
+const PlatformsGames = connection.define(
+    'PlatformsGames',
+    {
         platformId: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -61,6 +79,20 @@ const Game = connection.define(
                 model: Platform,
                 key: 'platformId'
             }
+        },
+        gameId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: Game,
+                key: 'gameId'
+            }
+        },
+        platformsGamesId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true
         }
     },
     {
@@ -69,23 +101,26 @@ const Game = connection.define(
     }
 );
 
-/* Game.belongsTo(Publisher, {
-    through: { model: Game },
+Game.belongsTo(Publisher, {
+    foreignKey: 'publisherId'
+});
+
+Publisher.hasMany(Game, {
     foreignKey: 'publisherId'
 });
 
 Game.belongsToMany(Platform, {
-    through: { model: Game },
+    through: { model: PlatformsGames },
+    foreignKey: 'gameId'
+});
+
+Platform.belongsToMany(Game, {
+    through: { model: PlatformsGames },
     foreignKey: 'platformId'
 });
 
-Publisher.belongsToMany(Game, {
-    through: { model: Game },
-    foreignKey: 'publisherId'
-}); */
-
 connection
-    .sync({})
+    .authenticate()
     .then(() => {
         console.log("Connection to database established successfully");
     })
@@ -93,6 +128,6 @@ connection
         console.error("Unable to connect to the database: ", err);
     });
 
-module.exports = { Game, Publisher, Platform };
+module.exports = { Game, Publisher, Platform, PlatformsGames };
 
 
