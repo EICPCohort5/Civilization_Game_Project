@@ -19,14 +19,16 @@ function renderTable(games) {
     let tableBody = document.querySelector('#games-container tbody');
     let rows = [];
     for (let game of games) {
+        const platformNamesList = [];
+        for(let p of game.Platforms) platformNamesList.push(p.platformName);
         let row = document.createElement('tr');
         row.insertAdjacentHTML(
             `beforeend`,
             `
             <td>${game.title}</td>
             <td>${game.releaseDate}</td>
-            <td>${game.publisherId}</td>
-            <td>${game.platformId}</td>
+            <td>${game.Publisher.publisherName}</td>
+            <td>${platformNamesList.join(', ')}</td>
             `
         );
         rows.push(row);

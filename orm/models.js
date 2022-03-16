@@ -53,15 +53,7 @@ const Game = connection.define(
                 model: Publisher,
                 key: 'publisherId'
             }
-        },
-        /* platformId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: Platform,
-                key: 'platformId'
-            }
-        } */
+        }
     },
     {
         underscored: true,

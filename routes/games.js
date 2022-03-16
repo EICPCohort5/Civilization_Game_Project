@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const { Game, Publisher, Platform } = require('../orm/models');
+const { Game, Publisher, Platform, PlatformsGames } = require('../orm/models');
 
 router.get('/', (req, res) => {
-  Game.findAll({})
+  Game.findAll({
+    include: [Publisher, Platform]
+  })
   .then(game => {
     res.json(game);
   })
