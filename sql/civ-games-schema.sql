@@ -53,3 +53,4 @@ INSERT INTO platforms_games (platform_id, game_id)
 -- SELECT * FROM platforms;
 -- SELECT * FROM games;
 -- SELECT * FROM platforms_games;
+-- DELETE FROM games WHERE game_id > 4;

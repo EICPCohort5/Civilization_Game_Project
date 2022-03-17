@@ -20,6 +20,7 @@ function renderTable(games) {
     let rows = [];
     for (let game of games) {
         const platformNamesList = [];
+        console.log(`-----------${game.Platforms.platformName}`);
         for(let p of game.Platforms) platformNamesList.push(p.platformName);
         let row = document.createElement('tr');
         row.insertAdjacentHTML(
