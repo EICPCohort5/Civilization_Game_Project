@@ -15,4 +15,19 @@ router.get('/', (req, res) => {
   })
 });
 
+router.get('/:id', (req, res) => {
+  Game.findOne({
+    where: {
+      gameId: req.params['id']
+    }
+  })
+  .then(game => {
+    res.json(game);
+  })
+  .catch(error => {
+    console.log(error);
+    res.status(404).send(error);
+  })
+});
+
 module.exports = router;
