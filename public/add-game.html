@@ -28,16 +28,18 @@
         <input type="text" name="title" id="game-title" class="form-control" required/>
       </div>
       <div class="mt-2">
-        <label for="game-publisher" class="form-label">Author</label>
-        <input type="text" name="publisher" id="game-publisher" class="form-control" required/>
+        <label for="game-release" class="form-label">Release Date</label>
+        <input type="date" name="releaseDate" id="game-release" class="form-control" required/>
       </div>
       <div class="mt-2">
-        <label for="game-year" class="form-label">Year</label>
-        <input type="number" name="year" id="game-year" class="form-control" required/>
+        <label for="game-publisher" class="form-label">Publisher</label>
+        <!-- <input type="number" name="publisher" id="game-publisher" class="form-control" required/> -->
+        <select name="publisherId" id="game-publisher" class="form-select" disabled></select>
       </div>
       <div class="mt-2">
-        <label for="game-platform" class="form-label">Publisher</label>
-        <input type="number" name="platform" id="game-platform" class="form-control" required/>
+        <label for="game-platform" class="form-label">Platform</label>
+        <!-- <input type="number" name="platform" id="game-platform" class="form-control" required/> -->
+        <select name="platformId" id="game-platform" class="form-select" disabled></select>
       </div>
       <div class="mt-2">
         <button type="submit" class="btn btn-primary">Add Game</button>

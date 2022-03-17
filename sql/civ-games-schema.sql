@@ -11,7 +11,7 @@ CREATE TABLE publishers (
 );
 
 INSERT INTO publishers (publisher_id, publisher_name)
-	VALUES (1, 'Bethesda'), (2, 'Activision Blizzard'), (3, 'Bungie'), (4, '343');
+	VALUES (1, 'Bethesda'), (2, 'Activision Blizzard'), (3, 'Bungie'), (4, '343'), (5, 'Nintendo');
 
 CREATE TABLE platforms (
 	platform_id int not null auto_increment,
@@ -20,7 +20,7 @@ CREATE TABLE platforms (
 );
 
 INSERT INTO platforms (platform_id, platform_name)
-	VALUES (1, 'Xbox'), (2, 'PlayStation'), (3, 'PC');
+	VALUES (1, 'Xbox'), (2, 'PlayStation'), (3, 'PC'), (4, 'Nintendo');
 
 CREATE TABLE games (
 	game_id int not null auto_increment,
